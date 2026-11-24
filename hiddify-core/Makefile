@@ -13,7 +13,12 @@ PKG_LICENSE:=GPL-3.0-or-later
 PKG_LICENSE_FILES:=LICENSE.md
 PKG_MAINTAINER:=Hiddify <wrt@hiddify.com>
 
+ifneq ($(wildcard $(TOPDIR)/feeds/packages/lang/golang/golang1.27),)
+PKG_BUILD_DEPENDS:=golang1.27/host
+else
 PKG_BUILD_DEPENDS:=golang/host
+endif
+
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=no-mips16
 
